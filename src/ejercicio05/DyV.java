@@ -16,10 +16,20 @@ public class DyV {
 	}
 	
 	private int metodoDyV(ArrayList<Integer> lista, int num,int inicio, int fin) {
+		int medio=(fin+inicio)/2;
+		if(this.entre(num,lista.get(medio), lista.get(medio+1))) return this.menordiferencia(num,lista.get(medio), lista.get(medio+1));
 		
+		if(num<=lista.get(medio)) return this.metodoDyV(lista, num, inicio, medio);
+		return this.metodoDyV(lista, num, medio+1, fin);
+	}
+	private int menordiferencia(int num, int menor, int mayor) {
+		if((mayor-num)<(num-menor)) return mayor;
 		
-		
-		return 0;
+		return menor;
+	}
+
+	private boolean entre(int numero, int menor, int mayor) {
+		return (numero>=menor && numero<=mayor); 
 	}
 
 }
